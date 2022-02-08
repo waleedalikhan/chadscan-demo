@@ -3,19 +3,19 @@ import React from "react";
 const HeroComponent: React.FC = () => {
   return (
     <>
-      <div className="flex justify-center hero-bg w-full h-[70vh] pt-10">
-        <div className="flex flex-col">
+      <div className="flex justify-center hero-bg w-full h-[95vh] items-center">
+        <div className="flex flex-col -mt-40">
           <h1 className="text-black  text-[77.97px] font-bold leading-[96.29px]">
             ChadScan <br />
             Block explorer
           </h1>
-          <p className="text-[23px] text-black font-[500] font-work-sans">
+          <p className="text-[23px] text-black font-[500] font-work-sans my-4">
             ChadScan is a native block <br /> explorer for the IDEP Network
           </p>
           <input
             type="text"
             placeholder="TxHash | Address | Block | Token | Validator"
-            className="placeholder:font-[400] placeholder:text-xl placeholder:font-work-sans placeholder:grey_-1 rounded-[9px] bg-white p-4 mt-3 input-shadow font-work-sans text-xl"
+            className="placeholder:font-[400] placeholder:text-xl placeholder:font-work-sans placeholder:grey_-1 rounded-[9px] bg-white p-4 mt-3 input-shadow font-work-sans text-xl mb-2"
           />
           <button className="flex items-center justify-center text-white bg-[#141522] rounded-[9px] mt-4 shadow-[0px_17px_26px_-6px_#141522] w-[181.74px] h-[57.36px] space-x-2">
             <svg

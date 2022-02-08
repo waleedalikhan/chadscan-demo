@@ -35,7 +35,7 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
           {item.hasExtraHeading && <th className="w-[20%]"></th>}
           <th
             className={cn("font-work-sans text-black font-medium text-left", {
-              "w-[21%]": item.hasExtraHeading,
+              "w-[30%]": item.hasExtraHeading,
               "w-[35%] pl-6": !item.hasExtraHeading,
             })}
           >
@@ -43,7 +43,7 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
           </th>
           <th
             className={cn("font-work-sans text-black font-medium text-left", {
-              "w-[18%]": item.hasExtraHeading,
+              "w-[13%]": item.hasExtraHeading,
               "w-[20%]": !item.hasExtraHeading,
             })}
           >
@@ -80,7 +80,12 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
     return (
       <React.Fragment key={item.id}>
         <tr className="flex items-center mt-5 border-b-[1.2px] border-gray-300 pb-5 w-full h-16">
-          <td className={cn("flex items-center w-[35%]")}>
+          <td
+            className={cn("flex items-center", {
+              "w-[45%]": item.hasGreenBadge || item.hasRedBadge,
+              "w-[35%]": !item.hasGreenBadge && !item.hasRedBadge,
+            })}
+          >
             {item.hasGreenBadge && (
               <img src="/img/greentick.svg" alt="green-tick" />
             )}
@@ -106,9 +111,9 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
             </p>
           </td>
           <td
-            className={cn("text-blue_-1 w-[20%]", {
-              "ml-7": item.hasGreenBadge || item.hasRedBadge,
-              "ml-0": !item.hasGreenBadge && !item.hasRedBadge,
+            className={cn("text-blue_-1", {
+              "ml-7 w-[13.5%]": item.hasGreenBadge || item.hasRedBadge,
+              "ml-0 w-[20%]": !item.hasGreenBadge && !item.hasRedBadge,
             })}
           >
             {item.blockNumber}
@@ -155,8 +160,8 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
         </div>
       </div>
       <table className="w-full">
-        <thead className="mt-10 flex border-b-[1.2px] border-gray-300 pb-5 w-full items-center">
-          {renderTableHeader}
+        <thead className="mt-10 flex border-b-[1.2px] border-gray-300 pb-5 w-full">
+          <tr className="flex items-center w-full">{renderTableHeader}</tr>
         </thead>
         <tbody>{renderTableData}</tbody>
       </table>
