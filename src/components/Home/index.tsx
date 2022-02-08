@@ -17,6 +17,7 @@ interface ITableData {
 }
 
 interface ITableHeader {
+  hasExtraHeading?: boolean;
   headingOne: string;
   headingTwo: string;
   headingThree: string;
@@ -27,6 +28,7 @@ interface ITableHeader {
 const Home: React.FC = () => {
   const transactionsHeader: ITableHeader[] = [
     {
+      hasExtraHeading: true,
       headingOne: "Transactions",
       headingTwo: "Block",
       headingThree: "Amount (IDEP)",

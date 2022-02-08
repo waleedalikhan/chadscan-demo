@@ -3,9 +3,9 @@ import React from "react";
 const HeroComponent: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col items-center hero-bg w-full h-[70vh] pt-10">
+      <div className="flex justify-center hero-bg w-full h-[70vh] pt-10">
         <div className="flex flex-col">
-          <h1 className="text-black  text-[77.97px] font-work-sans font-bold leading-[96.29px] general-sans-bold">
+          <h1 className="text-black  text-[77.97px] font-bold leading-[96.29px]">
             ChadScan <br />
             Block explorer
           </h1>

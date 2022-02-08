@@ -46,6 +46,7 @@ module.exports = {
       fontFamily: {
         "work-sans": ["Work Sans", "sans-serif"],
         nunito: ["Nunito", "sans-serif"],
+        sans: ['General Sans', 'sans-serif'],
       },
     },
   },

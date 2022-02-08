@@ -13,6 +13,7 @@ interface ITableData {
 }
 
 interface ITableHeader {
+  hasExtraHeading?: boolean;
   headingOne: string;
   headingTwo: string;
   headingThree: string;
@@ -31,37 +32,42 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
     (item: ITableHeader, index: number) => {
       return (
         <React.Fragment key={index}>
+          {item.hasExtraHeading && <th className="w-[20%]"></th>}
           <th
-            className={cn(
-              "font-work-sans text-black font-medium text-left pl-6 w-[35%]"
-            )}
+            className={cn("font-work-sans text-black font-medium text-left", {
+              "w-[21%]": item.hasExtraHeading,
+              "w-[35%] pl-6": !item.hasExtraHeading,
+            })}
           >
             {item.headingOne}
           </th>
           <th
-            className={cn(
-              "font-work-sans text-black font-medium text-left w-[20%]"
-            )}
+            className={cn("font-work-sans text-black font-medium text-left", {
+              "w-[18%]": item.hasExtraHeading,
+              "w-[20%]": !item.hasExtraHeading,
+            })}
           >
             {item.headingTwo}
           </th>
           <th
-            className={cn(
-              "font-work-sans text-black font-medium text-left w-[20%]"
-            )}
+            className={cn("font-work-sans text-black font-medium text-left", {
+              "w-[20%]": item.hasExtraHeading,
+              "w-[15%]": !item.hasExtraHeading,
+            })}
           >
             {item.headingThree}
           </th>
           <th
-            className={cn(
-              "font-work-sans text-black font-medium text-left w-[15%]"
-            )}
+            className={cn("font-work-sans text-black font-medium text-left", {
+              "w-[15%]": item.hasExtraHeading,
+              "w-[20%]": !item.hasExtraHeading,
+            })}
           >
             {item.headingFour}
           </th>
           <th
             className={cn(
-              "font-work-sans text-black font-medium text-right w-[10%]"
+              "font-work-sans text-black font-medium w-[10%] text-left"
             )}
           >
             {item.headingFive}
@@ -75,15 +81,19 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
       <React.Fragment key={item.id}>
         <tr className="flex items-center mt-5 border-b-[1.2px] border-gray-300 pb-5 w-full h-16">
           <td className={cn("flex items-center w-[35%]")}>
-            {item.hasGreenBadge && <img src="/img/greentick.svg" alt="" />}
-            {item.hasRedBadge && <img src="/img/redcross.svg" alt="" />}
             {item.hasGreenBadge && (
-              <span className="bg-green_3 rounded-[4.78px] px-3 py-0.5 text-green_-1 font-bold mx-2">
+              <img src="/img/greentick.svg" alt="green-tick" />
+            )}
+            {item.hasRedBadge && (
+              <img src="/img/redcross.svg" alt="red-cross" />
+            )}
+            {item.hasGreenBadge && (
+              <span className="bg-green_3 rounded-[4.78px] px-3 py-0.5 text-green_-1 font-bold mx-4">
                 Delegate
               </span>
             )}
             {item.hasRedBadge && (
-              <span className="bg-red_3 rounded-[4.78px] px-3 py-0.5 text-red_-1 font-bold mx-2">
+              <span className="bg-red_3 rounded-[4.78px] px-3 py-0.5 text-red_-1 font-bold mx-4">
                 Delegate
               </span>
             )}
@@ -95,12 +105,31 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
               {item.transactionID}
             </p>
           </td>
-          <td className={cn("text-blue_-1 w-[20%]")}>{item.blockNumber}</td>
-          <td className={cn("text-[#44476A] w-[20%]")}>{item.amountIDEP}</td>
-          <td className={cn("text-[#44476A] w-[15%]")}>{item.feeIDEP}</td>
-          <td className={cn("text-[#44476A] w-[10%] text-right")}>
-            {item.time}
+          <td
+            className={cn("text-blue_-1 w-[20%]", {
+              "ml-7": item.hasGreenBadge || item.hasRedBadge,
+              "ml-0": !item.hasGreenBadge && !item.hasRedBadge,
+            })}
+          >
+            {item.blockNumber}
           </td>
+          <td
+            className={cn("text-[#44476A]", {
+              "w-[20%]": item.hasGreenBadge || item.hasRedBadge,
+              "w-[15%]": !item.hasGreenBadge && !item.hasRedBadge,
+            })}
+          >
+            {item.amountIDEP}
+          </td>
+          <td
+            className={cn("text-[#44476A] mt-3", {
+              "w-[15%]": item.hasGreenBadge || item.hasRedBadge,
+              "w-[20%]": !item.hasGreenBadge && !item.hasRedBadge,
+            })}
+          >
+            {item.feeIDEP}
+          </td>
+          <td className={cn("text-[#44476A] w-[10%]")}>{item.time}</td>
         </tr>
       </React.Fragment>
     );
@@ -129,7 +158,7 @@ const Table: React.FC<Props> = ({ tableData, tableHeading, tableHeader }) => {
         <thead className="mt-10 flex border-b-[1.2px] border-gray-300 pb-5 w-full items-center">
           {renderTableHeader}
         </thead>
-        <tbody className="">{renderTableData}</tbody>
+        <tbody>{renderTableData}</tbody>
       </table>
     </div>
   );
