@@ -1,8 +1,16 @@
-@import url('https://www.fontshare.com/fonts/general-sans?fs=27&dt=name');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "GeneralSans-Bold";
+  src: url("./fonts/GeneralSans-Bold.woff2") format("woff2"),
+    url("./fonts/GeneralSans-Bold.woff") format("woff"),
+    url("./fonts/GeneralSans-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
 
 html,
 body {
@@ -10,14 +18,10 @@ body {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
+
 .hero-bg {
   background: linear-gradient(
       180deg,
@@ -34,5 +38,5 @@ a {
 }
 
 .general-sans-font {
-  font-family: "GeneralSans", monospace;
+  font-family: "GeneralSans-Bold", monospace !important;
 }

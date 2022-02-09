@@ -2,7 +2,7 @@ import React from "react";
 
 const Cards: React.FC = () => {
   return (
-    <div className="flex justify-evenly items-center container mx-auto -mt-20">
+    <div className="flex justify-evenly items-center container mx-auto -mt-48">
       <div className="flex items-start">
         <div className="flex flex-col">
           <div className="flex space-x-4">
